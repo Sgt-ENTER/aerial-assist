@@ -1,3 +1,4 @@
+
 #include "ChopsticksPickUp.h"
 #include "../Robotmap.h"
 
@@ -9,7 +10,7 @@ void ChopsticksPickUp::Initialize(){
 }
 
 void ChopsticksPickUp::Execute(){
-	chopsticks->spin(CHOPSTICKS_SPEED);
+	chopsticks->spinChopsticks(CHOPSTICKS_SPEED);
 }
 
 bool ChopsticksPickUp::IsFinished(){
@@ -20,5 +21,5 @@ void ChopsticksPickUp::End(){
 }
 
 void ChopsticksPickUp::Interrupted(){
-	chopsticks->spin (0.0);
+	chopsticks->spinChopsticks (0.0);
 }	

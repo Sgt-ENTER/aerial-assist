@@ -9,7 +9,7 @@ void ChopsticksPutDown::Initialize(){
 }
 
 void ChopsticksPutDown::Execute(){
-	chopsticks->spin(-CHOPSTICKS_SPEED);
+	chopsticks->spinChopsticks(-CHOPSTICKS_SPEED);
 }
 
 bool ChopsticksPutDown::IsFinished(){
@@ -20,5 +20,5 @@ void ChopsticksPutDown::End(){
 }
 
 void ChopsticksPutDown::Interrupted(){
-	chopsticks->spin (0.0);
+	chopsticks->spinChopsticks (0.0);
 }	

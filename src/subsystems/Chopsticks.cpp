@@ -2,15 +2,20 @@
 #include "../Robotmap.h"
 
 Chopsticks::Chopsticks():Subsystem("Chopsticks"){
-    motor = new Victor (CHOPSTICK_MOTOR_PWM);
-
+    chopsticksmotor = new Victor (CHOPSTICK_MOTOR_PWM);
+	verticalmotor = new Victor (VERTICAL_CHOPSTICKS_MOTOR_PWM);
 }
 
 Chopsticks::~Chopsticks() {
-	delete motor;
+	delete chopsticksmotor;
+	delete verticalmotor;
 }
 
-void Chopsticks::spin(double speed) {
-	motor->Set(speed); 
+void Chopsticks::spinChopsticks(double speed) {
+	chopsticksmotor->Set(speed); 
 	
+}
+
+void Chopsticks::moveChopsticks(double speed){
+	verticalmotor->Set(speed);
 }

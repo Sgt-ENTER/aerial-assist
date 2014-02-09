@@ -7,10 +7,12 @@ class Chopsticks: public Subsystem {
 	public:
 		Chopsticks();
 		~Chopsticks();
-		void spin(double speed);
+		void spinChopsticks(double speed);
+		void moveChopsticks(double speed);
 		
 	private:
-		Victor* motor;
+		Victor* chopsticksmotor;
+		Victor* verticalmotor;
 };
 
 #endif
