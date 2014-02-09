@@ -47,3 +47,7 @@ double OI::getJoyDrvZ(){
 double OI::getJoyDrvThrottle(){
 	return -(joyDrv->GetTwist()-1.0)/2.0;
 }
+
+bool OI::weBePimpin(){
+	return joyDrv->GetRawButton(PIMP_ROLL_BUTTON);
+}

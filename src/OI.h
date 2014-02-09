@@ -20,6 +20,7 @@ public:
 	double getJoyDrvY();
 	double getJoyDrvZ();
 	double getJoyDrvThrottle();
+	bool weBePimpin();
 };
 
 #endif

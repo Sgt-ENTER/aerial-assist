@@ -7,7 +7,6 @@ class Davros : public IterativeRobot {
     private:
         Command *autonomousCommand;
         LiveWindow *lw;
-        Gyro *gyro;
         Encoder *encoderA, *encoderB, *encoderC, *encoderD;
         
         

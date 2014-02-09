@@ -35,6 +35,8 @@
 
 #define GYRO_PORT 1
 
+#define PIMP_ROLL_BUTTON 7
+
 #define ENCODER_A_1 1
 #define ENCODER_A_2 2
 #define ENCODER_B_1 3

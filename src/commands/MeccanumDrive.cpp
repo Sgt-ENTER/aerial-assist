@@ -13,8 +13,9 @@ void MeccanumDrive::Execute(){
     double y = oi->getJoyDrvY();
     double z = oi->getJoyDrvZ();
     double throttle = oi->getJoyDrvThrottle();
+    bool weBePimpin = oi->weBePimpin();
    
-	chassis->drive(x, y, z, throttle);
+	chassis->drive(x, y, z, throttle,weBePimpin);
     
     // Put the values onto the SmartDashboard
     SmartDashboard::PutNumber("Joystick x", x);

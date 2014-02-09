@@ -3,7 +3,7 @@
 #include "Davros.h"
 #include "Robotmap.h"
 
-Davros::Davros(): gyro(new Gyro(GYRO_PORT)), 
+Davros::Davros(): 
 	encoderA (new Encoder(ENCODER_A_1, ENCODER_A_2, ENCODER_A_REV)), 
 	encoderB (new Encoder(ENCODER_B_1, ENCODER_B_2, ENCODER_B_REV)), 
 	encoderC (new Encoder(ENCODER_C_1, ENCODER_C_2, ENCODER_C_REV)), 
@@ -21,7 +21,6 @@ void Davros::RobotInit() {
 
 void Davros::AutonomousInit() {
     //autonomousCommand->Start();
-    gyro->Reset();
     
     encoderA->Reset();
     encoderB->Reset();
@@ -44,7 +43,6 @@ void Davros::TeleopInit() {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     //autonomousCommand->Cancel();
-    gyro->Reset();
     
     encoderA->Reset();
     encoderB->Reset();
@@ -59,7 +57,6 @@ void Davros::TeleopInit() {
 
 void Davros::TeleopPeriodic() {
     Scheduler::GetInstance()->Run();
-    SmartDashboard::PutNumber("Gyro(deg)", gyro->GetAngle());
     SmartDashboard::PutNumber("EncoderA(counts)", encoderA->Get());
 	SmartDashboard::PutNumber("EncoderB(counts)", encoderB->Get());
 	SmartDashboard::PutNumber("EncoderC(counts)", encoderC->Get());

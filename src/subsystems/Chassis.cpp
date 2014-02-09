@@ -4,12 +4,16 @@
 #include "../Robotmap.h"
 #include "../commands/MeccanumDrive.h"
 
-Chassis::Chassis():Subsystem("Chassis"){
+Chassis::Chassis():Subsystem("Chassis"),gyro(new Gyro(GYRO_PORT)){
     driveMotorA = new Victor(MOTOR_A_PWM);
     driveMotorB = new Victor(MOTOR_B_PWM);
     driveMotorC = new Victor(MOTOR_C_PWM);
     driveMotorD = new Victor(MOTOR_D_PWM);
-
+    
+    //we are waiting for the gyro to stabilize
+    Wait(1.0);
+    gyro->Reset();
+    
 }
 
 Chassis::~Chassis() {
@@ -17,10 +21,20 @@ Chassis::~Chassis() {
 	delete driveMotorB;
 	delete driveMotorC;
 	delete driveMotorD;
+	delete gyro;
 }
 
-void Chassis::drive(double vX, double vY, double vZ, double throttle) {
+void Chassis::drive(double vX, double vY, double vZ, double throttle, bool weBePimpin) {
 	double vMotor[4];
+	
+	//this maps the body co-ordinates to the absolute field co-ordinates
+	if(weBePimpin){
+		double heading = gyro->GetAngle()*3.14159/180.0;
+		double vXpimp = vX*cos(heading)+vY*sin(heading);
+		double vYpimp = -vX*sin(heading)+vY*cos(heading);
+		vX = vXpimp;
+		vY = vYpimp;
+	}
 	
 	vMotor[0] = vX - vY - vZ;
 	vMotor[1] = vX + vY - vZ;
@@ -36,6 +50,8 @@ void Chassis::drive(double vX, double vY, double vZ, double throttle) {
 	for (int i = 0; i < 4; ++i){
 		vMotor[i] = vMotor[i]/vmax*throttle; 
 	}
+	
+	
 	driveMotorA->Set(vMotor[0]);
     driveMotorB->Set(vMotor[1]);
     driveMotorC->Set(vMotor[2]);
@@ -46,6 +62,7 @@ void Chassis::drive(double vX, double vY, double vZ, double throttle) {
     SmartDashboard::PutNumber("Motor B", vMotor[1]);
     SmartDashboard::PutNumber("Motor C", vMotor[2]);
     SmartDashboard::PutNumber("Motor D", vMotor[3]);
+    SmartDashboard::PutNumber("Gyro(deg)", gyro->GetAngle());
 
 }
 
