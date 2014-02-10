@@ -10,7 +10,7 @@ void ChopsticksPickUp::Initialize(){
 }
 
 void ChopsticksPickUp::Execute(){
-	chopsticks->spinChopsticks(CHOPSTICKS_SPEED);
+	chopsticks->spinChopsticks(CHOPSTICKS_ROTATE_SPEED);
 }
 
 bool ChopsticksPickUp::IsFinished(){

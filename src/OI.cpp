@@ -4,6 +4,8 @@
 #include "commands/ChopsticksPickUp.h"
 #include "commands/ChopsticksPutDown.h"
 #include "commands/ThrowBall.h"
+#include "commands/ChopsticksMoveUp.h"
+#include "commands/ChopsticksMoveDown.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -15,10 +17,15 @@ OI::OI() {
 	throwButton = new JoystickButton(joyDrv,THROW_BUTTON);
 	throwButton->WhenPressed(new ThrowBall());
 	
-	chopsticksUpButton = new JoystickButton(joyDrv,CHOPSTICKS_UP_BUTTON);
-	chopsticksUpButton->WhileHeld(new ChopsticksPickUp());
-	chopsticksDownButton = new JoystickButton(joyDrv,CHOPSTICKS_DOWN_BUTTON);
-	chopsticksDownButton->WhileHeld(new ChopsticksPutDown());
+	chopsticksSpinUpButton = new JoystickButton(joyDrv,CHOPSTICKS_SPIN_UP_BUTTON);
+	chopsticksSpinUpButton->WhileHeld(new ChopsticksPickUp());
+	chopsticksSpinDownButton = new JoystickButton(joyDrv,CHOPSTICKS_SPIN_DOWN_BUTTON);
+	chopsticksSpinDownButton->WhileHeld(new ChopsticksPutDown());
+	
+	chopsticksMoveUpButton = new JoystickButton(joyDrv,CHOPSTICKS_MOVE_UP_BUTTON);
+	chopsticksMoveUpButton->WhenPressed(new ChopsticksMoveUp());
+	chopsticksMoveDownButton = new JoystickButton(joyDrv, CHOPSTICKS_MOVE_DOWN_BUTTON);
+	chopsticksMoveDownButton->WhenPressed(new ChopsticksMoveDown());
 }
 
 Joystick* OI::getJoyDrv() {

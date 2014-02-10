@@ -11,7 +11,7 @@ Chassis::Chassis():Subsystem("Chassis"),gyro(new Gyro(GYRO_PORT)){
     driveMotorD = new Victor(MOTOR_D_PWM);
     
     //we are waiting for the gyro to stabilize
-    Wait(1.0);
+    Wait(2.0);
     gyro->Reset();
     
 }

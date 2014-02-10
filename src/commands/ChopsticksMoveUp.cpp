@@ -9,7 +9,7 @@ void ChopsticksMoveUp::Initialize(){
 }
 
 void ChopsticksMoveUp::Execute(){
-	chopsticks->moveChopsticks(CHOPSTICKS_SPEED);
+	chopsticks->moveChopsticks(CHOPSTICKS_MOVE_SPEED);
 }
 
 bool ChopsticksMoveUp::IsFinished(){
