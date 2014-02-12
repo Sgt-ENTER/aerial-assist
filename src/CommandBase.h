@@ -5,6 +5,7 @@
 #include "subsystems/Chassis.h"
 #include "subsystems/Chopsticks.h"
 #include "subsystems/Catapult.h"
+#include "subsystems/Beaglebone.h"
 
 
 /**
@@ -22,6 +23,7 @@ public:
 	static Chopsticks *chopsticks;
 	static OI *oi;
 	static Catapult *catapult;
+	static Beaglebone* beaglebone;
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "Beaglebone.h"
 #include "../Robotmap.h"
+#include "../commands/RunTracking.h"
 
 #include <cstdlib>
 
@@ -93,5 +94,9 @@ void Beaglebone::findBall() {
 	else{
 		 isConnected = false;
 	 }
+}
+
+void Beaglebone::InitDefaultCommand() {
+    SetDefaultCommand(new RunTracking());
 }
 
