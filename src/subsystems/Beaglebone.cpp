@@ -13,7 +13,7 @@ Beaglebone::Beaglebone():Subsystem ("Beaglebone"){
     goalY = 99.0;
     goalAngle = 99.0;
     isConnected = false;
-    isTrackingBall = false;
+    isTrackingBall = true;
 }
 
 Beaglebone::~Beaglebone() {
