@@ -4,6 +4,7 @@
 
 RunTracking::RunTracking():CommandBase("RunTracking"){
 	Requires(beaglebone);
+	SetInterruptible(false);
 }
 
 void RunTracking::Initialize(){	
@@ -25,6 +26,7 @@ bool RunTracking::IsFinished(){
 }
 
 void RunTracking::End(){
+	beaglebone->shutdown();
 }
 
 void RunTracking::Interrupted(){

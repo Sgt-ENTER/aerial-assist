@@ -2,8 +2,6 @@
 #include "../Robotmap.h"
 #include "../commands/RunTracking.h"
 
-#include <cstdlib>
-
 Beaglebone::Beaglebone():Subsystem ("Beaglebone"){
     connector = new TCPConnector();
     ballX = 99.0;
@@ -14,6 +12,7 @@ Beaglebone::Beaglebone():Subsystem ("Beaglebone"){
     goalAngle = 99.0;
     isConnected = false;
     isTrackingBall = true;
+    connect();
 }
 
 Beaglebone::~Beaglebone() {
@@ -35,7 +34,7 @@ void Beaglebone::connect() {
 }
 
 void Beaglebone::findGoal() {
-	connect();
+	//connect();
 	if(stream){
 		isConnected = true;
 		
@@ -59,12 +58,13 @@ void Beaglebone::findGoal() {
 	}
 	else{
 		 isConnected = false;
+		 connect();
 	 }
 }
 
 
 void Beaglebone::findBall() {
-	connect();
+	//connect();
 	if(stream){
 		isConnected = true;
 		
@@ -93,6 +93,7 @@ void Beaglebone::findBall() {
 	}
 	else{
 		 isConnected = false;
+		 connect();
 	 }
 }
 
@@ -100,3 +101,8 @@ void Beaglebone::InitDefaultCommand() {
     SetDefaultCommand(new RunTracking());
 }
 
+void Beaglebone::shutdown() {
+	if (stream) {
+		delete stream;
+	}
+}

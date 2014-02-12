@@ -12,8 +12,9 @@ class Beaglebone: public Subsystem{
 		void readData();
 		double ballX, ballY, ballDiam, goalX, goalY, goalAngle;
 		bool isConnected;
-		static bool isTrackingBall;
+		bool isTrackingBall;
 		void InitDefaultCommand();
+		void shutdown();
 				
 	private:
 		TCPConnector* connector;
