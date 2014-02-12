@@ -9,13 +9,18 @@ class Beaglebone: public Subsystem{
 	public:
 		Beaglebone();
 		~Beaglebone();
-		void connect();
-		void findGoal();
-		void findBall();
+		void readData();
+		double ballX, ballY, ballDiam, goalX, goalY, goalAngle;
+		bool isConnected;
+		static bool isTrackingBall;
 		
+				
 	private:
 		TCPConnector* connector;
 		TCPStream* stream;
+		void connect();
+		void findGoal();
+		void findBall();
 	
 };
 
