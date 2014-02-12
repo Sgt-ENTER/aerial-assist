@@ -13,7 +13,7 @@ void CatchBall::Initialize(){
 }
 
 void CatchBall::Execute(){
-
+}
 
 bool CatchBall::IsFinished(){
 	return false; 
